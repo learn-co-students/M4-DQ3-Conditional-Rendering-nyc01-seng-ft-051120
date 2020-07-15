@@ -2,7 +2,14 @@ import React from 'react'
 import MenuBar from '../components/MenuBar.js'
 import { Profile, Photos, Cocktails, Pokemon} from '../components/Pages.js'
 
+
+
 class MainBox extends React.Component {
+
+
+  state = {
+    option: ""
+  }
 
 
   render() {
@@ -13,12 +20,16 @@ class MainBox extends React.Component {
 
     */
 
-    const detailsToDisplay = <div>Hi, I'm a div!</div>
+    const detailsToDisplay = <div>Hi, I'm a div!</div> 
+    // Profile, Photos, Cocktails, Pokemon
 
     return (
       <div>
-        <MenuBar />
-        {detailsToDisplay}
+        <MenuBar selectOption= {(choice)=> this.setState({option: choice })}/>
+        {this.state.option==='Profile' && Profile()}
+        {this.state.option==='Photo' && Photos()}
+        {this.state.option==='Cocktail' && Cocktails()}
+        {this.state.option==='Pokemon' && <Pokemon/>} 
       </div>
     )
   }

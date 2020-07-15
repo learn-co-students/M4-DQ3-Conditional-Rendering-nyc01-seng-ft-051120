@@ -1,6 +1,7 @@
 import React from 'react'
+import { Profile } from './Pages'
 
-const MenuBar = (props) => {
+class MenuBar extends React.Component{
 
   /*
 
@@ -13,25 +14,48 @@ const MenuBar = (props) => {
 
   */
 
-  return (
-    <div className="ui four item menu">
-      <a className="item active" id="profile">
-        <i className="user large icon" id="profile"/>
-      </a>
+  toggleActive = e => {
 
-      <a className="item" id="photo">
-        <i className="photo large icon" id="photo"/>
-      </a>
+    console.log(e.target)
+    const classes = Array.from(e.target.closest('a').classList)
+    
+    if (classes.includes('active')){
+        e.target.closest('a').classList.remove('active')
+    } else {
+        e.target.closest('a').classList.add('active')
+    }
+  }
 
-      <a className="item" id="cocktail">
-        <i className="cocktail large icon" id="cocktail"/>
-      </a>
 
-      <a className="item" id="pokemon"> 
-        <i className=" themeisle large icon" id="pokemon"/>
-      </a>
-    </div>
-  )
+  renderDiv = (e, divName)=> {
+    console.log(e)
+   this.toggleActive(e)
+   this.props.selectOption(divName)
+
+  }
+
+  render(){  
+    return (
+      <div className="ui four item menu">
+        <a className="item active" id="profile" onClick={(e)=>this.renderDiv(e, 'Profile')}>
+          <i className="user large icon" id="profile"/>
+        </a>
+
+        <a className="item" id="photo" onClick={(e)=>this.renderDiv(e, 'Photo')}>
+          <i className="photo large icon" id="photo"/>
+        </a>
+
+        <a className="item" id="cocktail" onClick={(e)=>this.renderDiv(e, 'Cocktail')}>
+          <i className="cocktail large icon" id="cocktail"/>
+        </a>
+
+        <a className="item" id="pokemon" onClick={(e)=>this.renderDiv(e, 'Pokemon')}> 
+          <i className=" themeisle large icon" id="pokemon"/>
+        </a>
+      </div>
+    )
+  }
+
 
 }
 
