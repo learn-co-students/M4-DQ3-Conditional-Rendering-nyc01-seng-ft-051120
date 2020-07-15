@@ -3,8 +3,14 @@ import MenuBar from '../components/MenuBar.js'
 import { Profile, Photos, Cocktails, Pokemon} from '../components/Pages.js'
 
 class MainBox extends React.Component {
+ 
+  state={display: 'profile', 
+      active: true}
 
-
+  handleClick=(e)=>{
+    this.setState({display: e.target.id, 
+    element: e.target})
+  }
   render() {
 
     /*
@@ -13,12 +19,21 @@ class MainBox extends React.Component {
 
     */
 
-    const detailsToDisplay = <div>Hi, I'm a div!</div>
-
+    const detailsToDisplay = ()=>{
+      switch(this.state.display){
+        case 'profile': return <Profile/>
+        case 'photo': return <Photos/>
+        case 'cocktail': return <Cocktails/>
+        case 'pokemon': return <Pokemon/>
+        default: return <Profile/>
+      }
+    
+    }
+    
     return (
       <div>
-        <MenuBar />
-        {detailsToDisplay}
+        <MenuBar handleClick={this.handleClick}/>
+        {detailsToDisplay()}
       </div>
     )
   }
