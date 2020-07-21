@@ -1,6 +1,56 @@
 import React from 'react'
 
-const MenuBar = (props) => {
+class MenuBar extends React.Component {
+
+  handleClick = (event) => {
+    this.props.changeSelected(event.target.id)
+  }
+
+  render() {
+    return (
+			<div className='ui four item menu'>
+				<a
+					className={
+						'item ' + (this.props.selected === 'profile' ? 'active' : null)
+					}
+					id='profile'
+					onClick={this.handleClick}>
+					<i className='user large icon' id='profile' />
+				</a>
+
+				<a
+					className={
+						'item ' + (this.props.selected === 'photo' ? 'active' : null)
+					}
+					id='photo'
+					onClick={this.handleClick}>
+					<i className='photo large icon' id='photo' />
+				</a>
+
+				<a
+					className={
+						'item ' + (this.props.selected === 'cocktail' ? 'active' : null)
+					}
+					id='cocktail'
+					onClick={this.handleClick}>
+					<i className='cocktail large icon' id='cocktail' />
+				</a>
+
+				<a
+					className={
+						'item ' + (this.props.selected === 'pokemon' ? 'active' : null)
+					}
+					id='pokemon'
+					onClick={this.handleClick}>
+					<i className=' themeisle large icon' id='cocktail' />
+				</a>
+			</div>
+		);
+
+  }
+}
+export default MenuBar
+
 
   /*
 
@@ -13,26 +63,6 @@ const MenuBar = (props) => {
 
   */
 
-  return (
-    <div className="ui four item menu">
-      <a className="item active" id="profile">
-        <i className="user large icon" id="profile"/>
-      </a>
 
-      <a className="item" id="photo">
-        <i className="photo large icon" id="photo"/>
-      </a>
 
-      <a className="item" id="cocktail">
-        <i className="cocktail large icon" id="cocktail"/>
-      </a>
 
-      <a className="item" id="pokemon"> 
-        <i className=" themeisle large icon" id="pokemon"/>
-      </a>
-    </div>
-  )
-
-}
-
-export default MenuBar
