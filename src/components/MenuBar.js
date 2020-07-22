@@ -12,22 +12,22 @@ const MenuBar = (props) => {
   this component be made aware of what is currently the active menu item?
 
   */
-
+  const active = props.active
   return (
     <div className="ui four item menu">
-      <a className="item active" id="profile">
+      <a className={`item ${active === 'profile'?"active":""}`} id="profile" onClick={props.handleClick}>
         <i className="user large icon" id="profile"/>
       </a>
 
-      <a className="item" id="photo">
+      <a className={`item ${active === 'photo'?"active":""}`} id="photo" onClick={props.handleClick}>
         <i className="photo large icon" id="photo"/>
       </a>
 
-      <a className="item" id="cocktail">
+      <a className={`item ${active === 'cocktail'?"active":""}`} id="cocktail" onClick={props.handleClick}>
         <i className="cocktail large icon" id="cocktail"/>
       </a>
 
-      <a className="item" id="pokemon"> 
+      <a className={`item ${active === 'pokemon'?"active":""}`} id="pokemon" onClick={props.handleClick}> 
         <i className=" themeisle large icon" id="pokemon"/>
       </a>
     </div>
